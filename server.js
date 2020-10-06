@@ -8,7 +8,7 @@ var port = process.env.PORT || 8080;
 // immediate abuse (e.g. denial of service). If you want to block all origins except for some,
 // use originWhitelist instead.
 var originBlacklist = parseEnvList(process.env.CORSANYWHERE_BLACKLIST);
-var originWhitelist = parseEnvList(process.env.CORSANYWHERE_WHITELIST);
+var originWhitelist = ['https://ey-go-fc9b1.firebaseapp.com/'];
 function parseEnvList(env) {
   if (!env) {
     return [];
@@ -24,7 +24,7 @@ cors_proxy.createServer({
   originBlacklist: originBlacklist,
   originWhitelist: originWhitelist,
   requireHeader: ['origin', 'x-requested-with'],
-  checkRateLimit: checkRateLimit,
+  // checkRateLimit: checkRateLimit,
   removeHeaders: [
     'cookie',
     'cookie2',
